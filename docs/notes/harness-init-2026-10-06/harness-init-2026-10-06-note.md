@@ -2,7 +2,7 @@
 type: note
 title: Harness initialization 2026-10-06
 description: Lean development-harness initialization with approved full entry integration and recorded deferrals.
-status: draft
+status: stable
 ---
 
 # Harness initialization 2026-10-06
@@ -17,7 +17,7 @@ No legacy warnings reported; migration not needed.
 
 ## Discovery
 
-Pending file-based discovery. Lifecycle questions deferred, not inferred.
+File-based discovery: repository contains PRD/spec, local jury review, temporary Wolven 0.3.1 development dependency, pnpm lockfile, eighteen installed skills, three rules, and the seeded architecture-recording decision. No runner, tests, README, or CI exists. Confirmed evaluation tools are Codex CLI, OpenSpec, and local Docker; Harbor remains a preference subject to compatibility. QMD collection configuration exists but the qmd executable is unavailable; used repository text search. Lifecycle questions deferred, not inferred.
 
 ## Research
 
@@ -25,15 +25,15 @@ Repo-only; optional web research deferred by Human.
 
 ## Suggestions
 
-Pending; proposals are not deferred.
+Proposed benchmark-isolation and codex-openspec-evaluation skills, citing the confirmed PRD/spec isolation and runtime decisions. Human selected D: neither.
 
 ## Stubs
 
-None selected or written yet.
+None selected; no additional stubs written.
 
 ## Harness score
 
-Pending. Gap keep/drop questions deferred; no checks dropped.
+Initial score attempt could not run. Human approved installing harness-score 1.6.5. Scoring then reported L2 Guided, 43/108 (40%). No rules changed: after score remains L2 Guided, 43/108 (40%). No credential-leak checks failed. Twenty-one gaps remain: CTX-07; SKL-03; AGT-01, AGT-02; HKS-01 through HKS-05; SNS-01 through SNS-05; CI-01 through CI-04; HYG-02, HYG-05, HYG-08. Per-dimension questions were deferred; no checks dropped or gaps built. This is development-harness maturity, not evaluation performance.
 
 ## Validate wiring
 
@@ -54,4 +54,4 @@ Deferred; nothing written beyond existing setup scripts.
 
 ## Next steps for the Human
 
-Resolve pre-existing PRD validation findings, choose proposed skills, and approve scorer installation when offered. Phase commits require separate explicit approval after validation passes.
+No stubs to define. Keep score gaps open; choose CI wiring later. QMD executable/index setup remains unavailable. Continue reviewing the draft benchmark spec and resolve its open experiment contracts before planning. Prune the temporary development harness before benchmark freeze and exclude it from evaluation workspaces. Human approved the setup-phase local commit; nothing pushed. The jury review is excluded from this commit. pragmatic-guard was not consulted because it is not loaded in the runtime session skill list. Entry-phase commit: 4c90dbd.
