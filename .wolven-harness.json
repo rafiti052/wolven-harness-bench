@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "gitHost": "gh",
+  "runtimes": [
+    "codex"
+  ],
+  "skillSets": [
+    "ship",
+    "discovery"
+  ],
+  "packageVersion": "0.3.1"
+}
