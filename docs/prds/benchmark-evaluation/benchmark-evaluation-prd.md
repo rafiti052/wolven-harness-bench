@@ -1,3 +1,10 @@
+---
+type: prd
+title: Wolven benchmark evaluation
+description: Independent evaluation of coding-agent workflows through controlled smoke experiments and a later frozen pilot.
+status: draft
+---
+
 # PRD: Wolven benchmark evaluation
 
 Status: Draft for review  
@@ -222,7 +229,7 @@ These choices do not block review of the product scope. Record their resolved va
 - Wolven overview: https://github.com/WolvenTech/wolven-harness
 - Wolven entry instructions and structure score: https://github.com/WolvenTech/wolven-harness/blob/main/templates/WOLVEN.md
 - Wolven execution and resume workflow: https://github.com/WolvenTech/wolven-harness/blob/main/templates/.agents/skills/code-execute/SKILL.md
-- Wolven architecture-reference validation: https://github.com/WolvenTech/wolven-harness/blob/main/docs/adrs/adr-001-claim-path.md
+- Wolven architecture-reference validation: https://api.github.com/repos/WolvenTech/wolven-harness/git/blobs/4e70ec034a4262f564a2d207af17d93533609b51
 - Harbor: https://github.com/harbor-framework/harbor
 - SWE-bench: https://github.com/SWE-bench/SWE-bench
 - Terminal-Bench: https://github.com/harbor-framework/terminal-bench
