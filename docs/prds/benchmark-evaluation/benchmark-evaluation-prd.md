@@ -2,6 +2,7 @@
 
 Status: Draft for review  
 Date: 2026-10-02  
+Updated: 2026-10-06  
 Repository: `rafiti052/wolven-harness-bench` (public)  
 Product: An independent benchmark runner and task suite for evaluating coding-agent workflows.
 
@@ -56,13 +57,13 @@ The first release implements the workflow-effect and workflow-alternatives track
 | C | Wolven | Same agent/model with a pinned Wolven release and documented initialized configuration |
 | D | Alternative workflow | Same agent/model with a pinned Spec Kit or OpenSpec configuration |
 
-Pick the runtime, model, and alternative through a compatibility smoke test before freezing the pilot configuration. Record these choices in the experiment manifest. No claim of cross-model generality is made by this pilot.
+Use Codex CLI with OpenSpec as condition D. Pin the exact model, reasoning settings, runtime, and framework versions through the compatibility smoke test before freezing the pilot configuration. Record these choices in the experiment manifest. No claim of cross-model generality is made by this pilot.
 
 ## Scope and milestones
 
 ### Milestone 1: Validated smoke experiment
 
-Deliver 10 tasks spanning all six task families, all four condition adapters, independent grading, artifact capture, and a cost estimate. Run one trial per task and condition, for 40 agent runs, after validating the task environments.
+Deliver 10 tasks drawn from synthetic fixtures and pinned public benchmark tasks, all four condition adapters, independent grading, artifact capture, and a cost estimate. Cover the six task families through synthetic fixtures where public tasks do not exercise them. Run one trial per task and condition, for 40 agent runs, after validating the task environments. Execute locally with Docker. The total smoke experiment cap is US$50 for model and execution costs; stop before exceeding it, even if this leaves the 40-run experiment incomplete. The user's team authors tasks and reviews grading. Do not dispatch paid runs solely because the budget is recorded; experiment preparation and launch remain separate steps.
 
 Done when every task's reference solution passes; known incorrect solutions fail the intended checks; each condition completes an end-to-end run; an interrupted runner can resume without duplicating finished runs; and a report can trace each result to its artifacts.
 
@@ -72,7 +73,7 @@ Deliver 60 validated tasks, a disjoint development set, frozen configuration, th
 
 ### Milestone 3: External validation and ablations
 
-Add a pinned SWE-bench Verified subset evaluated by its official evaluator. Add selected Terminal-Bench tasks when they serve the intended use case. Run focused Wolven ablations only after the main comparison is stable. These are follow-up releases, not prerequisites for Milestone 2.
+Expand public benchmark coverage beyond the pinned tasks included in the smoke experiment, using official evaluators for SWE-bench Verified and selected Terminal-Bench tasks where applicable. Run focused Wolven ablations only after the main comparison is stable. Broader external validation and ablations are follow-up releases, not prerequisites for Milestone 2.
 
 ## Task suite
 
@@ -85,7 +86,7 @@ Add a pinned SWE-bench Verified subset evaluated by its official evaluator. Add 
 | Interrupted work and handoffs | 10 | Recovery from persisted state in a fresh agent session |
 | Scope and verification traps | 10 | Staying within requested scope and making supported completion claims |
 
-Prefer several representative repository fixtures and languages supported by the selected runtime. Publish the task distribution and explain any limits on representativeness. Do not select final tasks based on which configuration wins.
+Use synthetic repository fixtures plus pinned public benchmark tasks; user-supplied real repositories are outside the initial scope. The user's team owns task authoring and grading review. Prefer several representative fixtures and languages supported by Codex CLI. Publish the task distribution and explain any limits on representativeness. Do not select final tasks based on which configuration wins.
 
 Each task package must include a starting snapshot, user request, factual documentation, allowed paths and actions, reference solution, acceptance checks, regression checks, constraint checks, resource requirements, budget, and grading rubric where necessary. Reference solutions and hidden checks must be inaccessible to the agent.
 
@@ -154,7 +155,7 @@ Predeclare C versus A as the primary comparison. Treat C versus B and C versus D
 
 Generate 95% confidence intervals by resampling tasks while retaining their paired conditions and repeated trials. For generalization across repositories, disclose repository clustering and use a repository-aware analysis when the number of fixtures supports it. Do not count repeated trials as independent tasks.
 
-The 60-task pilot is a practical starting point, not a power guarantee. Use development/smoke results to estimate variance and choose a minimum worthwhile effect before freezing the pilot. Evaluate whether more distinct tasks are needed; label inconclusive results explicitly.
+The 60-task pilot is a practical starting point, not a power guarantee. Use development/smoke results to estimate variance. The user will choose the minimum worthwhile effect and acceptable cost/review tradeoff after reviewing smoke results and before freezing the pilot. Evaluate whether more distinct tasks are needed; label inconclusive results explicitly.
 
 ## Product acceptance criteria
 
@@ -192,13 +193,26 @@ Keep generated run artifacts and credentials out of Git. Store lightweight manif
 | Trials exceed budget | Smoke cost estimate, bounded dispatch, explicit spending limits |
 | Small suite produces uncertain conclusions | Task-level intervals and a prospective sample-size decision |
 
-## Decisions to resolve before implementation
+## Confirmed decisions
 
-- Select one initial agent runtime, exact model configuration, and supported execution environment.
-- Choose Spec Kit or OpenSpec for condition D after the compatibility smoke test.
-- Set per-task budgets, total experiment spending limit, and allowable infrastructure retry count.
-- Select representative repository fixtures and assign task authors and reviewers.
-- Define the minimum worthwhile acceptance improvement and acceptable cost/review tradeoff.
+Confirmed by the user on 2026-10-06:
+
+- Runtime: Codex CLI; alternative workflow: OpenSpec.
+- Smoke spending cap: US$50 total for model and execution costs.
+- Task sources: synthetic fixtures plus pinned public benchmark tasks.
+- Execution environment: local Docker.
+- Task authoring and grading review: the user and their team.
+- Adoption threshold: decide after smoke results, before the final pilot.
+
+The 720-run pilot has no approved budget yet. The smoke cap does not authorize pilot spending.
+
+## Decisions still to resolve
+
+- Pin the Codex CLI version, exact model and reasoning configuration, and Docker environment requirements.
+- Pin the OpenSpec and Wolven versions and validate compatibility.
+- Set per-task budgets and infrastructure retry rules within the US$50 smoke cap; estimate and approve a separate pilot budget later.
+- The user's team selects synthetic fixtures and public task versions and names the task authors and grading reviewers.
+- After smoke results, define the minimum worthwhile acceptance improvement and acceptable cost/review tradeoff before freezing the pilot.
 - Repository ownership, name, and visibility are confirmed: `rafiti052/wolven-harness-bench`, public.
 
 These choices do not block review of the product scope. Record their resolved values in the first experiment manifest.
