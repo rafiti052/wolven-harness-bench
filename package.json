@@ -7,5 +7,8 @@
 		"harness:validate": "wolven-harness validate",
 		"harness:comments": "wolven-harness comments",
 		"harness:score": "harness-score"
+	},
+	"engines": {
+		"node": ">=24.22.1"
 	}
 }
